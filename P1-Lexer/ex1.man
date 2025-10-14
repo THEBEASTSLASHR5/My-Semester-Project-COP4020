@@ -1,0 +1,76 @@
+NAME
+     Ex1 - Command Line Exercise
+
+SYNOPSIS
+     Learn and practice basic Linux command line usage, including file creation,
+     compression/decompression, archiving, navigation, and manual page writing.
+
+DESCRIPTION
+     In this exercise I practiced creating and editing files with nano, compressing
+     them with gzip/gunzip, archiving files with tar, extracting archives, and
+     creating a man-formatted documentation file. I also learned to navigate the
+     filesystem, search with grep, and package results into a compressed tarball.
+
+     path_to_edited_file/file1.c
+         Not applicable for this exercise since I worked with text files instead
+         of C source code. The equivalent was editing and recreating text files
+         like somefile.txt and other.txt with nano.
+
+         Changes made: Created files, added text content, and tested compression.
+         Reason: To demonstrate how to edit files and later include them in tarballs.
+
+     path_to_new_file/file2.c
+         Not applicable in the context of kernel source. Here, the new file was
+         somefile2.txt, created to be included in the tar.gz archive.
+
+         Purpose: To provide a third file to bundle and compress.
+         Content: A short sample text written with nano.
+
+     command [-options] [-arguments]
+         I used commands like:
+           - `tar -cvf` (create verbose file archive)
+           - `tar -xvf` (extract verbose file archive)
+           - `tar -zcvf` (create compressed .tar.gz)
+           - `tar -xzvf` (extract compressed .tar.gz)
+           - `gzip` / `gunzip` (compress and decompress single files)
+           - `grep -r "android_dev" ~` (recursive search in home directory)
+
+         I learned about these commands from the exercise instructions and
+         man pages (`man tar`, `man gzip`, `man grep`).
+
+         The options used:
+           -c = create archive
+           -x = extract archive
+           -v = verbose (show files)
+           -f = specify filename
+           -z = use gzip compression
+           -r = recursive search
+
+         I decided to use these commands because they are required for file packaging,
+         searching, and demonstrating Linux navigation.
+
+TESTING
+     - Created and opened files with nano, verified by viewing them after saving.
+     - Ran gzip and gunzip, checked that the .gz file appeared and decompressed back.
+     - Created tar archives, listed contents with ls to confirm.
+     - Extracted archives and verified files reappeared correctly.
+     - Ran grep to generate output.txt and moved it into my personal directory.
+     - Compressed the directory into ex1.tar.gz and confirmed with ls.
+
+BUGS
+     - At first, `gzip` was not installed in Termux and gave "command not found".
+       Fixed by installing gzip with the package manager.
+     - Searching for "android_dev" in /usr/src/linux did not work because that
+       directory does not exist in Termux. I searched in my home directory instead.
+
+LINK
+     Screencast link: I do not have one
+
+REFERENCES/CITATIONS
+     - COP4600 Ex1 Instructions PDF
+     - https://liw.fi/manpages/
+     - https://www.linux.com/news/what-you-need-know-write-man-pages/
+     - `man tar`, `man gzip`, `man grep`
+
+AUTHOR
+     Sean Parrell
