@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ParserExpressionTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ParserExpressionTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/plc.project.html">plc.project</a> &gt; ParserExpressionTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">18</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.094s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">94%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Failed tests</a>
+</li>
+<li>
+<a href="#">Tests</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="testLiteralExpression(String, List, Literal)[2]"></a>
+<h3 class="failures">[2] Integer Literal, [INTEGER=1@0], Ast.Expression.Literal{literal=1}</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: plc.project.Ast$Expression$Literal@36cda2c2&lt;Ast.Expression.Literal{literal=1}&gt; but was: plc.project.Ast$Expression$Literal@3697186&lt;Ast.Expression.Literal{literal=1}&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
+	at app//plc.project.ParserExpressionTests.test(ParserExpressionTests.java:268)
+	at app//plc.project.ParserExpressionTests.testLiteralExpression(ParserExpressionTests.java:71)
+	at java.base@17.0.13/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base@17.0.13/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base@17.0.13/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base@17.0.13/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base@17.0.13/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base@17.0.13/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base@17.0.13/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base@17.0.13/java.util.ArrayList.forEach(ArrayList.java:1511)
+</pre>
+</span>
+</div>
+</div>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">[1] Variable, [IDENTIFIER=name@0], Ast.Expression.Access{receiver=Optional.empty, name='name'}</td>
+<td class="success">testAccessExpression(String, List, Access)[1]</td>
+<td class="success">0.050s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] Field Access, [IDENTIFIER=obj@0, OPERATOR=.@3, IDENTIFIER=field@4], Ast.Expression.Access{receiver=Optional[Ast.Expression.Access{receiver=Optional.empty, name='obj'}], name='field'}</td>
+<td class="success">testAccessExpression(String, List, Access)[2]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Assignment, [IDENTIFIER=name@0, OPERATOR==@5, IDENTIFIER=value@7, OPERATOR=;@12], Ast.Statement.Assignment{receiver=Ast.Expression.Access{receiver=Optional.empty, name='name'}, value=Ast.Expression.Access{receiver=Optional.empty, name='value'}}</td>
+<td class="success">testAssignmentStatement(String, List, Assignment)[1]</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Binary And, [IDENTIFIER=expr1@0, OPERATOR=&amp;&amp;@6, IDENTIFIER=expr2@10], Ast.Expression.Binary{operator='&amp;&amp;', left=Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, right=Ast.Expression.Access{receiver=Optional.empty, name='expr2'}}</td>
+<td class="success">testBinaryExpression(String, List, Binary)[1]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] Binary Equality, [IDENTIFIER=expr1@0, OPERATOR===@6, IDENTIFIER=expr2@9], Ast.Expression.Binary{operator='==', left=Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, right=Ast.Expression.Access{receiver=Optional.empty, name='expr2'}}</td>
+<td class="success">testBinaryExpression(String, List, Binary)[2]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[3] Binary Addition, [IDENTIFIER=expr1@0, OPERATOR=+@6, IDENTIFIER=expr2@8], Ast.Expression.Binary{operator='+', left=Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, right=Ast.Expression.Access{receiver=Optional.empty, name='expr2'}}</td>
+<td class="success">testBinaryExpression(String, List, Binary)[3]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[4] Binary Multiplication, [IDENTIFIER=expr1@0, OPERATOR=*@6, IDENTIFIER=expr2@8], Ast.Expression.Binary{operator='*', left=Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, right=Ast.Expression.Access{receiver=Optional.empty, name='expr2'}}</td>
+<td class="success">testBinaryExpression(String, List, Binary)[4]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Function Expression, [IDENTIFIER=name@0, OPERATOR=(@4, OPERATOR=)@5, OPERATOR=;@6], Ast.Statement.Expression{expression=Ast.Expression.Function{receiver=Optional.empty, name='name', arguments=[]}}</td>
+<td class="success">testExpressionStatement(String, List, Expression)[1]</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Zero Arguments, [IDENTIFIER=name@0, OPERATOR=(@4, OPERATOR=)@5], Ast.Expression.Function{receiver=Optional.empty, name='name', arguments=[]}</td>
+<td class="success">testFunctionExpression(String, List, Function)[1]</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] Multiple Arguments, [IDENTIFIER=name@0, OPERATOR=(@4, IDENTIFIER=expr1@5, OPERATOR=,@10, IDENTIFIER=expr2@12, OPERATOR=,@17, IDENTIFIER=expr3@19, OPERATOR=)@24], Ast.Expression.Function{receiver=Optional.empty, name='name', arguments=[Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, Ast.Expression.Access{receiver=Optional.empty, name='expr2'}, Ast.Expression.Access{receiver=Optional.empty, name='expr3'}]}</td>
+<td class="success">testFunctionExpression(String, List, Function)[2]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Grouped Variable, [OPERATOR=(@0, IDENTIFIER=expr@1, OPERATOR=)@5], Ast.Expression.Group{expression=Ast.Expression.Access{receiver=Optional.empty, name='expr'}}</td>
+<td class="success">testGroupExpression(String, List, Group)[1]</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[2] Grouped Binary, [OPERATOR=(@0, IDENTIFIER=expr1@1, OPERATOR=+@7, IDENTIFIER=expr2@9, OPERATOR=)@14], Ast.Expression.Group{expression=Ast.Expression.Binary{operator='+', left=Ast.Expression.Access{receiver=Optional.empty, name='expr1'}, right=Ast.Expression.Access{receiver=Optional.empty, name='expr2'}}}</td>
+<td class="success">testGroupExpression(String, List, Group)[2]</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[1] Boolean Literal, [IDENTIFIER=TRUE@0], Ast.Expression.Literal{literal=true}</td>
+<td class="success">testLiteralExpression(String, List, Literal)[1]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">[2] Integer Literal, [INTEGER=1@0], Ast.Expression.Literal{literal=1}</td>
+<td class="failures">testLiteralExpression(String, List, Literal)[2]</td>
+<td class="failures">0.022s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">[3] Decimal Literal, [DECIMAL=2.0@0], Ast.Expression.Literal{literal=2.0}</td>
+<td class="success">testLiteralExpression(String, List, Literal)[3]</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[4] Character Literal, [CHARACTER='c'@0], Ast.Expression.Literal{literal=c}</td>
+<td class="success">testLiteralExpression(String, List, Literal)[4]</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[5] String Literal, [STRING=&quot;string&quot;@0], Ast.Expression.Literal{literal=string}</td>
+<td class="success">testLiteralExpression(String, List, Literal)[5]</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">[6] Escape Character, [STRING=&quot;Hello,\nWorld!&quot;@0], Ast.Expression.Literal{literal=Hello,
+World!}</td>
+<td class="success">testLiteralExpression(String, List, Literal)[6]</td>
+<td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14</a> at Sep 27, 2025, 11:56:09 PM</p>
+</div>
+</div>
+</body>
+</html>

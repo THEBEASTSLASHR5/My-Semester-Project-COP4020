@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2226c6af-69d7-479c-919b-0ee01038d5f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/.vs/EsepWebhook/DesignTimeBuild/.dtbcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/.vs/EsepWebhook/v17/.futdcache.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/.vs/EsepWebhook/v17/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/EsepWebhook.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/Function.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/aws-lambda-tools-defaults.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/EsepWebhook.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/Amazon.Lambda.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/Amazon.Lambda.Serialization.SystemTextJson.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/EsepWebhook.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/EsepWebhook.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/EsepWebhook.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/bin/Release/net8.0/linux-x64/EsepWebhook.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Debug/net8.0/EsepWebhook.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/EsepWebhook.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/EsepWebhook.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/EsepWebhook.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebh.2DAAD0C6.Up2Date" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/EsepWebhook.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/PublishOutputs.bb0f758294.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/R2R/Amazon.Lambda.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/R2R/Amazon.Lambda.Serialization.SystemTextJson.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/R2R/EsepWebhook.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/ref/EsepWebhook.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/Release/net8.0/linux-x64/refint/EsepWebhook.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/src/EsepWebhook/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/test/EsepWebhook.Tests/EsepWebhook.Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Assignment9/src/esepwebhook/EsepWebhook/test/EsepWebhook.Tests/FunctionTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Open Source Assignment Part 2 Feedback - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/Rest API Assignment - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/git-enterprise-strategies" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/movie_ticket_payment_api.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CIS4930/my-app/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 1 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 2.1 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 2.2 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 2.3 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 3.1 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 3.2 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/Project 4 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/R assignment 1 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/R assignment 2 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/R assignment 3 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Engineer Stats/R assignment 4 - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/Cover Letter - Tech Writer.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/Discussions/Discussion #2.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/Failure Analysis Paper - Sean Parrell.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/Sean Daniel Parrell - resume.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/Sean Parrell - Job Application Portfolio.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell-Memo-YourIntershipChoice.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_AnalyzingEverydayFailure_Memo.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_ComparingTwoTypesOfSources.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_DocumentDesign.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_JobApplicationPortfolio.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_ResearchReport.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Professional Communication for Engineers/SeanParrell_SynthesizingSources.docx.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/ImageProcessing.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_extracredit.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part1.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part10.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part2.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part3.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part4.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part5.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part6.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part7.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part8_b.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part8_g.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part8_r.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/examples/EXAMPLE_part9.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/car.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/circles.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/layer1.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/layer2.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/layer_blue.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/layer_green.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/layer_red.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/pattern1.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/pattern2.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/text.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/input/text2.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/output/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/parrell.sean.project2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/src/tga.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/ImageProcessing/src/tga.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/Potential project 2/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/Potential project 2/tga.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Programming Fundamentals 2/Potential project 2/tga.h" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\sean\.gradle\wrapper\dists\gradle-8.14-bin\38aieal9i53h9rfe7vjup95b9\gradle-8.14" javaHome="C:\Program Files\Java\jdk-17" gradleVersion="8.14" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="33JF8W4a8FuP8FSxR7O2FUyX9R4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.ParserExpressionTests.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/sean/UF/Classes/Fall 2025/Operating Systems/P2A-Parser/src/main/java/org/example/Main.java",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2226c6af-69d7-479c-919b-0ee01038d5f5" name="Changes" comment="" />
+      <created>1759027121302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759027121302</updated>
+      <workItem from="1759027122694" duration="4779000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
