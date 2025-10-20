@@ -37,36 +37,20 @@ public class Interpreter implements Ast.Visitor {
        VISITOR IMPLEMENTATION FOR AST NODES
        ========================================================== */
 
-    /**
-     * Visit a source node (the root of the program).
-     * Currently, this only initializes global variables (fields),
-     * but does not execute any functions yet.
-     */
     @Override
     public Environment.PlcObject visit(Ast.Source SeanParrell4) {
-        // Loop through each declared global field and evaluate it.
         for (Ast.Field SeanParrell5 : SeanParrell4.getFields()) {
             visit(SeanParrell5);
         }
-        // Return NIL since we’re not running main() yet.
         return Environment.NIL;
     }
 
-    /**
-     * Visit a field declaration (global variable).
-     * Example: var x = 10;
-     */
     @Override
     public Environment.PlcObject visit(Ast.Field SeanParrell6) {
-        // Evaluate the initializer value if it exists, otherwise default to NIL.
         Environment.PlcObject SeanParrell7 = SeanParrell6.getValue().isPresent()
                 ? visit(SeanParrell6.getValue().get())
                 : Environment.NIL;
-
-        // Define the variable in the current scope with the computed value.
         SeanParrell1.define(SeanParrell6.getName(), SeanParrell7);
-
-        // Return NIL — defining a variable doesn’t produce a runtime value.
         return Environment.NIL;
     }
 
@@ -74,68 +58,139 @@ public class Interpreter implements Ast.Visitor {
        SIMPLE EXPRESSION TYPES
        ========================================================== */
 
-    /**
-     * Visit a literal expression.
-     * Example: numbers (10), strings ("hello"), booleans (true), etc.
-     */
     @Override
     public Environment.PlcObject visit(Ast.Expr.Literal SeanParrell8) {
-        // Retrieve the literal’s raw Java value.
         Object SeanParrell9 = SeanParrell8.getLiteral();
-
-        // If it’s null (e.g., "nil"), return NIL.
         if (SeanParrell9 == null) return Environment.NIL;
-
-        // Otherwise, wrap the literal value in a PlcObject and return it.
         return Environment.create(SeanParrell9);
     }
 
-    /**
-     * Visit a grouped expression.
-     * Example: (x + 1) — just evaluate the expression inside the parentheses.
-     */
     @Override
     public Environment.PlcObject visit(Ast.Expr.Group SeanParrell10) {
         return visit(SeanParrell10.getExpression());
     }
 
-    /**
-     * Visit a variable access expression.
-     * Example: reading the value of a variable (like “x”).
-     */
     @Override
     public Environment.PlcObject visit(Ast.Expr.Access SeanParrell11) {
-        // Look up the variable name from the current scope and return its value.
         return SeanParrell1.lookup(SeanParrell11.getName()).get();
     }
 
     /* ==========================================================
-       STUB METHODS — these are placeholders so code compiles
+       NEWLY IMPLEMENTED SECTIONS BELOW
        ========================================================== */
 
-    // Each of these will be implemented later for full language features.
+    /**
+     * Variable declaration (ex: let x = 5; or let y;)
+     * Added this so code can now handle declaring local variables.
+     */
+    @Override
+    public Environment.PlcObject visit(Ast.Stmt.Declaration SeanParrell14) {
+        Environment.PlcObject value = Environment.NIL;
+        if (SeanParrell14.getValue().isPresent()) {
+            value = visit(SeanParrell14.getValue().get());
+        }
+        SeanParrell1.define(SeanParrell14.getName(), value);
+        return Environment.NIL;
+    }
+
+    /**
+     * Assignment statement (ex: x = 10)
+     * Added this so code can now modify existing variable values.
+     */
+    @Override
+    public Environment.PlcObject visit(Ast.Stmt.Assignment SeanParrell15) {
+        Environment.Variable var = SeanParrell1.lookup(((Ast.Expr.Access)SeanParrell15.getReceiver()).getName());
+        Environment.PlcObject value = visit(SeanParrell15.getValue());
+        var.set(value);
+        return Environment.NIL;
+    }
+
+    /**
+     * Basic binary operations (ex: +, -, *, /, ==, <, >)
+     * Added this so arithmetic and logical expressions now actually compute results.
+     */
+    @Override
+    public Environment.PlcObject visit(Ast.Expr.Binary SeanParrell20) {
+        Environment.PlcObject left = visit(SeanParrell20.getLeft());
+        Environment.PlcObject right = visit(SeanParrell20.getRight());
+        String op = SeanParrell20.getOperator();
+
+        // Just a few main cases to make math and comparison work
+        switch (op) {
+            case "+":
+                if (left.getValue() instanceof String || right.getValue() instanceof String)
+                    return Environment.create(left.getValue().toString() + right.getValue().toString());
+                else
+                    return Environment.create(requireType(BigInteger.class, left).add(requireType(BigInteger.class, right)));
+            case "-":
+                return Environment.create(requireType(BigInteger.class, left).subtract(requireType(BigInteger.class, right)));
+            case "*":
+                return Environment.create(requireType(BigInteger.class, left).multiply(requireType(BigInteger.class, right)));
+            case "/":
+                BigInteger divisor = requireType(BigInteger.class, right);
+                if (divisor.equals(BigInteger.ZERO)) throw new RuntimeException("Division by zero");
+                return Environment.create(requireType(BigInteger.class, left).divide(divisor));
+            case "==":
+                return Environment.create(left.getValue().equals(right.getValue()));
+            case "!=":
+                return Environment.create(!left.getValue().equals(right.getValue()));
+            case "<":
+                return Environment.create(requireType(BigInteger.class, left).compareTo(requireType(BigInteger.class, right)) < 0);
+            case ">":
+                return Environment.create(requireType(BigInteger.class, left).compareTo(requireType(BigInteger.class, right)) > 0);
+            default:
+                throw new RuntimeException("Unknown operator: " + op);
+        }
+    }
+
+    /**
+     * Simple if-statement handling (added basic branching support).
+     */
+    @Override
+    public Environment.PlcObject visit(Ast.Stmt.If SeanParrell16) {
+        Environment.PlcObject condition = visit(SeanParrell16.getCondition());
+        if (requireType(Boolean.class, condition)) {
+            SeanParrell1 = new Scope(SeanParrell1); // push new scope
+            for (Ast.Stmt stmt : SeanParrell16.getThenStatements()) {
+                visit(stmt);
+            }
+            SeanParrell1 = SeanParrell1.getParent(); // pop scope
+        } else {
+            SeanParrell1 = new Scope(SeanParrell1);
+            for (Ast.Stmt stmt : SeanParrell16.getElseStatements()) {
+                visit(stmt);
+            }
+            SeanParrell1 = SeanParrell1.getParent();
+        }
+        return Environment.NIL;
+    }
+
+    /**
+     * While loop (added basic looping logic).
+     */
+    @Override
+    public Environment.PlcObject visit(Ast.Stmt.While SeanParrell18) {
+        while (requireType(Boolean.class, visit(SeanParrell18.getCondition()))) {
+            SeanParrell1 = new Scope(SeanParrell1);
+            for (Ast.Stmt stmt : SeanParrell18.getStatements()) {
+                visit(stmt);
+            }
+            SeanParrell1 = SeanParrell1.getParent();
+        }
+        return Environment.NIL;
+    }
+
+    // Other stubbed methods still here for completeness
     @Override public Environment.PlcObject visit(Ast.Method SeanParrell12){ return Environment.NIL; }
     @Override public Environment.PlcObject visit(Ast.Stmt.Expression SeanParrell13){ return Environment.NIL; }
-    @Override public Environment.PlcObject visit(Ast.Stmt.Declaration SeanParrell14){ return Environment.NIL; }
-    @Override public Environment.PlcObject visit(Ast.Stmt.Assignment SeanParrell15){ return Environment.NIL; }
-    @Override public Environment.PlcObject visit(Ast.Stmt.If SeanParrell16){ return Environment.NIL; }
     @Override public Environment.PlcObject visit(Ast.Stmt.For SeanParrell17){ return Environment.NIL; }
-    @Override public Environment.PlcObject visit(Ast.Stmt.While SeanParrell18){ return Environment.NIL; }
     @Override public Environment.PlcObject visit(Ast.Stmt.Return SeanParrell19){ return Environment.NIL; }
-    @Override public Environment.PlcObject visit(Ast.Expr.Binary SeanParrell20){ return Environment.NIL; }
     @Override public Environment.PlcObject visit(Ast.Expr.Function SeanParrell21){ return Environment.NIL; }
 
     /* ==========================================================
        UTILITY METHODS
        ========================================================== */
 
-    /**
-     * Ensures an object’s underlying Java value matches the expected type.
-     * @param SeanParrell22 The expected class type.
-     * @param SeanParrell23 The object to check.
-     * @return The underlying value cast to the expected type.
-     * @throws RuntimeException if the object type does not match.
-     */
     private static <T> T requireType(Class<T> SeanParrell22, Environment.PlcObject SeanParrell23) {
         if (SeanParrell22.isInstance(SeanParrell23.getValue()))
             return SeanParrell22.cast(SeanParrell23.getValue());
@@ -143,17 +198,8 @@ public class Interpreter implements Ast.Visitor {
                 ", got " + SeanParrell23.getValue().getClass().getName());
     }
 
-    /**
-     * Custom runtime exception used to represent a "return" control flow.
-     * When thrown inside a function, it carries the return value upward.
-     */
     private static class Return extends RuntimeException {
         final Environment.PlcObject SeanParrell24;
-
-        /**
-         * Creates a Return exception carrying a return value.
-         * @param SeanParrell25 The value being returned.
-         */
         Return(Environment.PlcObject SeanParrell25){
             SeanParrell24 = SeanParrell25;
         }
