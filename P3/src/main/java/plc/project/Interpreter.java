@@ -133,8 +133,12 @@ public class Interpreter {
                     ? (BigDecimal) av : new BigDecimal((BigInteger) av);
             BigDecimal y = (bv instanceof BigDecimal)
                     ? (BigDecimal) bv : new BigDecimal((BigInteger) bv);
-            return obj(x.divide(y));
+
+            // Divide with 1 decimal of precision, rounding half up
+            BigDecimal result = x.divide(y, 1, java.math.RoundingMode.HALF_UP);
+            return obj(result.stripTrailingZeros());
         }
+        // Integer division for BigIntegers
         return obj(((BigInteger) av).divide((BigInteger) bv));
     }
 
@@ -246,7 +250,24 @@ public class Interpreter {
         }
         return Environment.NIL;
     }
+    public Environment.PlcObject visit(Ast.Statement.For ast) {
+        // Run the initialization statement (e.g., let num = 0;)
+        if (ast.getInitialization() != null) {
+            visit(ast.getInitialization());
+        }
 
+        // Loop while condition evaluates to true
+        while (requireType(Boolean.class, visit(ast.getCondition()))) {
+            // Execute the loop body inside a new child scope
+            execBlock(ast.getStatements(), new Scope(scope));
+            // Run the increment statement (e.g., num = num + 1)
+            if (ast.getIncrement() != null) {
+                visit(ast.getIncrement());
+            }
+        }
+
+        return Environment.NIL;
+    }
     public Environment.PlcObject visit(Ast.Statement.Return ast) {
         throw new Return(visit(ast.getValue()));
     }
@@ -292,6 +313,19 @@ public class Interpreter {
             return obj(l && r);
         }
         if ("||".equals(op)) {
+            boolean l = requireType(Boolean.class, left);
+            if (l) return obj(true);
+            boolean r = requireType(Boolean.class, visit(ast.getRight()));
+            return obj(l || r);
+        }
+
+        if ("&&".equals(op) || "AND".equalsIgnoreCase(op)) {
+            boolean l = requireType(Boolean.class, left);
+            if (!l) return obj(false);
+            boolean r = requireType(Boolean.class, visit(ast.getRight()));
+            return obj(l && r);
+        }
+        if ("||".equals(op) || "OR".equalsIgnoreCase(op)) {
             boolean l = requireType(Boolean.class, left);
             if (l) return obj(true);
             boolean r = requireType(Boolean.class, visit(ast.getRight()));
