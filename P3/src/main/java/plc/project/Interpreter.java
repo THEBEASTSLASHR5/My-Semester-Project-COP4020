@@ -10,7 +10,8 @@ import java.util.List;
  * Interpreter — traverses the AST and evaluates nodes for our custom language.
  * Only this file is modified for the assignment.
  */
-public class Interpreter {
+public class Interpreter implements Ast.Visitor<Environment.PlcObject> {
+
 
     private Scope scope;
 
