@@ -52,10 +52,10 @@ public final class Analyzer implements Ast.Visitor<Void> {
 
     /**
      * Enforce assignability rules:
-     * - same types ✅
-     * - target Any accepts anything ✅
-     * - target Comparable accepts {Integer, Decimal, Character, String} ✅
-     * - otherwise ❌
+     * - same types
+     * - target Any accepts anything
+     * - target Comparable accepts {Integer, Decimal, Character, String}
+     * - otherwise
      */
     public static void requireAssignable(Environment.Type target, Environment.Type actual) {
         if (target.equals(actual)) return;
@@ -115,8 +115,12 @@ public final class Analyzer implements Ast.Visitor<Void> {
         }
 
         // 4) Must have main/0 that returns Integer.
-        Environment.Function main = scope.lookupFunction("main", 0);
-        if (main == null || !main.getReturnType().equals(Environment.Type.INTEGER)) {
+        try {
+            Environment.Function main = scope.lookupFunction("main", 0);
+            if (!main.getReturnType().equals(Environment.Type.INTEGER)) {
+                throw new RuntimeException("Program must define main(): Integer.");
+            }
+        } catch (RuntimeException e) {
             throw new RuntimeException("Program must define main(): Integer.");
         }
         return null;
@@ -228,6 +232,9 @@ public final class Analyzer implements Ast.Visitor<Void> {
     public Void visit(Ast.Statement.If ast) {
         visit(ast.getCondition());
         requireAssignable(Environment.Type.BOOLEAN, ast.getCondition().getType());
+        if (ast.getThenStatements().isEmpty()) {
+            throw new RuntimeException("If statement must have at least one 'then' statement.");
+        }
 
         // then
         Scope saved = scope;
@@ -298,6 +305,12 @@ public final class Analyzer implements Ast.Visitor<Void> {
             ast.setType(Environment.Type.BOOLEAN);
         } else if (lit instanceof BigInteger) {
             ast.setType(Environment.Type.INTEGER);
+            // Check integer range fits within 32-bit signed int
+            BigInteger val = (BigInteger) lit;
+            if (val.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0 ||
+                    val.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) < 0) {
+                throw new RuntimeException("Integer literal out of range: " + val);
+            }
         } else if (lit instanceof BigDecimal) {
             ast.setType(Environment.Type.DECIMAL);
         } else if (lit instanceof Character) {
@@ -327,6 +340,19 @@ public final class Analyzer implements Ast.Visitor<Void> {
 
         switch (op) {
             case "+":
+                // Numeric addition OR string concatenation
+                if (lt.equals(Environment.Type.STRING) || rt.equals(Environment.Type.STRING)) {
+                    ast.setType(Environment.Type.STRING); // allow concatenation with any type
+                } else if (lt.equals(Environment.Type.INTEGER) && rt.equals(Environment.Type.INTEGER)) {
+                    ast.setType(Environment.Type.INTEGER);
+                } else if (lt.equals(Environment.Type.DECIMAL) && rt.equals(Environment.Type.DECIMAL)) {
+                    ast.setType(Environment.Type.DECIMAL);
+                } else {
+                    throw new RuntimeException("Invalid '+' operation between " +
+                            lt.getName() + " and " + rt.getName() + ".");
+                }
+                break;
+
             case "-":
             case "*":
                 // numeric ops; both Integer or both Decimal (no mixing)

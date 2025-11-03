@@ -27,15 +27,73 @@ public final class Parser {
     // ----------------------------------------------------------------------
 
     public Ast.Source parseSource() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        List<Ast.Field> fields = new java.util.ArrayList<>();
+        List<Ast.Method> methods = new java.util.ArrayList<>();
+
+        while (peek("LET") || peek("DEF")) {
+            if (peek("LET")) {
+                fields.add(parseField());
+            } else if (peek("DEF")) {
+                methods.add(parseMethod());
+            } else {
+                throw new ParseException("Expected field or method definition", tokens.get(0).getIndex());
+            }
+        }
+
+        return new Ast.Source(fields, methods);
     }
 
     public Ast.Field parseField() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        match("LET");
+        String name = require(Token.Type.IDENTIFIER).getLiteral();
+        require(":");
+        String typeName = require(Token.Type.IDENTIFIER).getLiteral();
+
+        Optional<Ast.Expression> value = Optional.empty();
+        if (match("=")) {
+            value = Optional.of(parseExpression());
+        }
+
+        if (!match(";")) {
+            throw new ParseException("Expected ';'", tokens.get(0).getIndex());
+        }
+
+        return new Ast.Field(name, typeName, false, value);
     }
 
     public Ast.Method parseMethod() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        match("DEF");
+        String name = require(Token.Type.IDENTIFIER).getLiteral();
+        require("(");
+
+        List<String> parameters = new java.util.ArrayList<>();
+        List<String> parameterTypes = new java.util.ArrayList<>();
+
+        if (!peek(")")) {
+            do {
+                String paramName = require(Token.Type.IDENTIFIER).getLiteral();
+                require(":");
+                String typeName = require(Token.Type.IDENTIFIER).getLiteral();
+                parameters.add(paramName);
+                parameterTypes.add(typeName);
+            } while (match(","));
+        }
+
+        require(")");
+
+        Optional<String> returnType = Optional.empty();
+        if (match(":")) {
+            returnType = Optional.of(require(Token.Type.IDENTIFIER).getLiteral());
+        }
+
+        require("DO");
+        List<Ast.Statement> statements = new java.util.ArrayList<>();
+        while (!peek("END")) {
+            statements.add(parseStatement());
+        }
+        require("END");
+
+        return new Ast.Method(name, parameters, parameterTypes, returnType, statements);
     }
 
     // ----------------------------------------------------------------------
@@ -43,47 +101,114 @@ public final class Parser {
     // ----------------------------------------------------------------------
 
     public Ast.Statement parseStatement() throws ParseException {
-        // SeanParrell1: first try to parse any expression (assignment or plain expr)
-        Ast.Expression SeanParrell1 = parseExpression();
-
-        // If we see '=', this is an assignment statement
-        if (match("=")) {
-            Ast.Expression SeanParrell2 = parseExpression(); // right-hand side
-            if (!match(";")) {
-                throw new ParseException("Expected ';'", tokens.get(0).getIndex());
-            }
-            // Only an access expression (like a variable) can be assigned to
-            if (!(SeanParrell1 instanceof Ast.Expression.Access)) {
-                throw new ParseException("Invalid assignment target", tokens.get(0).getIndex());
-            }
-            return new Ast.Statement.Assignment((Ast.Expression.Access) SeanParrell1, SeanParrell2);
+        // Declaration statement
+        if (peek("LET")) {
+            Ast.Statement.Declaration decl = parseDeclarationStatement();
+            require(";");
+            return decl;
         }
 
-        // Otherwise it must be just an expression followed by a semicolon
-        if (!match(";")) {
-            throw new ParseException("Expected ';'", tokens.get(0).getIndex());
+        // IF statement
+        else if (peek("IF")) {
+            return parseIfStatement();
         }
-        return new Ast.Statement.Expression(SeanParrell1);
+
+        // WHILE statement
+        else if (peek("WHILE")) {
+            return parseWhileStatement();
+        }
+
+        // RETURN statement
+        else if (peek("RETURN")) {
+            Ast.Statement.Return ret = parseReturnStatement();
+            require(";");
+            return ret;
+        }
+
+        // FOR statement (if applicable)
+        else if (peek("FOR")) {
+            return parseForStatement();
+        }
+
+        // Default: expression or assignment statement
+        else {
+            Ast.Expression expr = parseExpression();
+            if (match("=")) {
+                Ast.Expression value = parseExpression();
+                require(";");
+                if (!(expr instanceof Ast.Expression.Access)) {
+                    throw new ParseException("Invalid assignment target", tokens.get(0).getIndex());
+                }
+                return new Ast.Statement.Assignment((Ast.Expression.Access) expr, value);
+            } else {
+                require(";");
+                return new Ast.Statement.Expression(expr);
+            }
+        }
     }
 
     public Ast.Statement.Declaration parseDeclarationStatement() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        match("LET");
+        String name = require(Token.Type.IDENTIFIER).getLiteral();
+
+        Optional<String> typeName = Optional.empty();
+        Optional<Ast.Expression> value = Optional.empty();
+
+        if (match(":")) {
+            typeName = Optional.of(require(Token.Type.IDENTIFIER).getLiteral());
+        }
+
+        if (match("=")) {
+            value = Optional.of(parseExpression());
+        }
+
+        return new Ast.Statement.Declaration(name, typeName, value);
     }
 
     public Ast.Statement.If parseIfStatement() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        match("IF");
+        Ast.Expression condition = parseExpression();
+        require("DO");
+
+        List<Ast.Statement> thenStmts = new java.util.ArrayList<>();
+        while (!peek("ELSE") && !peek("END")) {
+            thenStmts.add(parseStatement());
+        }
+
+        List<Ast.Statement> elseStmts = new java.util.ArrayList<>();
+        if (match("ELSE")) {
+            while (!peek("END")) {
+                elseStmts.add(parseStatement());
+            }
+        }
+
+        require("END");
+        return new Ast.Statement.If(condition, thenStmts, elseStmts);
+    }
+
+    public Ast.Statement.While parseWhileStatement() throws ParseException {
+        match("WHILE");
+        Ast.Expression condition = parseExpression();
+        require("DO");
+
+        List<Ast.Statement> stmts = new java.util.ArrayList<>();
+        while (!peek("END")) {
+            stmts.add(parseStatement());
+        }
+
+        require("END");
+        return new Ast.Statement.While(condition, stmts);
     }
 
     public Ast.Statement.For parseForStatement() throws ParseException {
         throw new UnsupportedOperationException(); // not required yet
     }
 
-    public Ast.Statement.While parseWhileStatement() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
-    }
 
     public Ast.Statement.Return parseReturnStatement() throws ParseException {
-        throw new UnsupportedOperationException(); // not required yet
+        match("RETURN");
+        Ast.Expression value = parseExpression();
+        return new Ast.Statement.Return(value);
     }
 
     // ----------------------------------------------------------------------
@@ -151,11 +276,18 @@ public final class Parser {
         Ast.Expression SeanParrell1 = parsePrimaryExpression();
         // Handle property access (expr.name)
         while (match(".")) {
-            if (match(Token.Type.IDENTIFIER)) {
-                String SeanParrell2 = tokens.get(-1).getLiteral();
-                SeanParrell1 = new Ast.Expression.Access(Optional.of(SeanParrell1), SeanParrell2);
+            String name = require(Token.Type.IDENTIFIER).getLiteral();
+            if (match("(")) {
+                List<Ast.Expression> args = new java.util.ArrayList<>();
+                if (!peek(")")) {
+                    do {
+                        args.add(parseExpression());
+                    } while (match(","));
+                }
+                require(")");
+                SeanParrell1 = new Ast.Expression.Function(Optional.of(SeanParrell1), name, args);
             } else {
-                throw new ParseException("Expected identifier after '.'", tokens.get(0).getIndex());
+                SeanParrell1 = new Ast.Expression.Access(Optional.of(SeanParrell1), name);
             }
         }
         return SeanParrell1;
@@ -267,6 +399,10 @@ public final class Parser {
             return true;
         }
         return false;
+    }
+    private Token require(Object expected) throws ParseException {
+        if (match(expected)) return tokens.get(-1);
+        throw new ParseException("Expected " + expected, tokens.has(0) ? tokens.get(0).getIndex() : -1);
     }
 
     // Wrapper around the token list that tracks current index
