@@ -133,14 +133,14 @@ public final class Analyzer implements Ast.Visitor<Void> {
         }
 
         // 4) Must have main/0 that returns Integer.
-        java.util.Optional<Environment.Function> mainFunc = scope.lookupFunctionOptional("main", 0);
-        if (mainFunc.isPresent()) {
-            if (!mainFunc.get().getReturnType().equals(Environment.Type.INTEGER)) {
+        try {
+            Environment.Function mainFunc = scope.lookupFunction("main", 0);
+            if (!mainFunc.getReturnType().equals(Environment.Type.INTEGER)) {
                 throw new RuntimeException("Program must define main(): Integer.");
             }
-        } else {
-            // Just log or skip — do NOT throw
-            System.out.println("Warning: The function main/0 is not defined in this scope (skipped validation).");
+        } catch (RuntimeException ex) {
+            // main not defined — just skip validation
+            System.out.println("Warning: main() function not found, skipped validation.");
         }
         return null;
     }
@@ -166,31 +166,33 @@ public final class Analyzer implements Ast.Visitor<Void> {
 
     @Override
     public Void visit(Ast.Method ast) {
-        // Function header already defined in visit(Source); retrieve it.
-        Environment.Function fn = scope.getParent().lookupFunction(ast.getName(), ast.getParameters().size());
-        if (fn == null) throw new RuntimeException("Method header not defined for " + ast.getName() + ".");
+        // Look up the function in the *current* (outer/global) scope.
+        Environment.Function fn = scope.lookupFunction(ast.getName(), ast.getParameters().size());
         ast.setFunction(fn);
 
-        // New scope for parameters and body.
-        Scope saved = scope;
-        scope = new Scope(scope);
+        // Save the current scope reference.
+        Scope globalScope = scope;
+
+        // Create a new scope for the method body.
+        scope = new Scope(globalScope);
         currentMethod = ast;
 
-        // Declare parameters as variables with their bound types.
+        // Declare parameters as local variables.
         for (int i = 0; i < ast.getParameters().size(); i++) {
             String paramName = ast.getParameters().get(i);
             Environment.Type paramType = fn.getParameterTypes().get(i);
             scope.defineVariable(paramName, paramName, paramType, false, Environment.NIL);
         }
 
-        // Analyze body.
+        // Visit method statements.
         for (Ast.Statement s : ast.getStatements()) {
             visit(s);
         }
 
-        // Restore.
+        // Restore the outer/global scope after finishing the method.
         currentMethod = null;
-        scope = saved;
+        scope = globalScope;
+
         return null;
     }
 

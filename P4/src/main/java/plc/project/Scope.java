@@ -80,12 +80,5 @@ public final class Scope {
                 ", functions=" + functions.keySet() +
                 '}';
     }
-    // Optional version of lookupFunction that doesn't throw if not found.
-    public java.util.Optional<Environment.Function> lookupFunctionOptional(String name, int arity) {
-        try {
-            return java.util.Optional.of(lookupFunction(name, arity));
-        } catch (RuntimeException e) {
-            return java.util.Optional.empty();
-        }
-    }
+
 }

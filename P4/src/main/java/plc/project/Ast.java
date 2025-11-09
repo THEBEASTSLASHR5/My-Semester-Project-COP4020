@@ -537,9 +537,9 @@ public abstract class Ast {
 
             @Override
             public boolean equals(Object obj) {
-                if (!(obj instanceof Literal)) return false;
-                Literal other = (Literal) obj;
-                return Objects.equals(literal, other.literal);
+                return obj instanceof Literal &&
+                        Objects.equals(literal, ((Literal) obj).literal) &&
+                        Objects.equals(type, ((Literal) obj).type);
             }
 
             @Override
@@ -580,9 +580,9 @@ public abstract class Ast {
 
             @Override
             public boolean equals(Object obj) {
-                if (!(obj instanceof Group)) return false;
-                Group other = (Group) obj;
-                return expression.equals(other.expression);
+                return obj instanceof Group &&
+                        expression.equals(((Group) obj).expression) &&
+                        Objects.equals(type, ((Group) obj).type);
             }
 
 
@@ -764,7 +764,7 @@ public abstract class Ast {
             public String toString() {
                 return "Ast.Expression.Function{" +
                         "receiver=" + receiver +
-                        ", name='" + name + '\'' +
+                        "name='" + name + '\'' +
                         ", arguments=" + arguments +
                         ", function=" + function +
                         '}';
