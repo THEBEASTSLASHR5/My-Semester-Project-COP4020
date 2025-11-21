@@ -32,6 +32,7 @@ public final class Generator implements Ast.Visitor<Void> {
     public Void visit(Ast.Source ast) {
         // class Main {
         print("public class Main {");
+        newline(0);   // blank line added in
         indent++;
 
         // fields
@@ -61,6 +62,7 @@ public final class Generator implements Ast.Visitor<Void> {
 
         indent--;
         newline(0);
+        newline(0);   // added in to match test result
         print("}");
 
         return null;
@@ -171,7 +173,81 @@ public final class Generator implements Ast.Visitor<Void> {
 
     @Override
     public Void visit(Ast.Statement.For ast) {
-        throw new UnsupportedOperationException(); //TODO
+        print("for ( ");
+
+        if (ast.getInitialization() != null) {
+            removeTrailingSemicolon(() -> visit(ast.getInitialization()));
+        }
+        print("; ");
+
+        if (ast.getCondition() != null) {
+            visit(ast.getCondition());
+        }
+        print("; ");
+
+        // increment
+        if (ast.getIncrement() != null) {
+            removeTrailingSemicolon(() -> visit(ast.getIncrement()));
+            print(" ) {");
+        } else {
+            // no increment — print EXACTLY one space before ')'
+            print(") {");
+        }
+        indent++;
+
+        for (Ast.Statement stmt : ast.getStatements()) {
+            newline(indent);
+            visit(stmt);
+        }
+
+        indent--;
+        newline(indent);
+        print("}");
+        return null;
+    }
+
+    private void removeTrailingSemicolon(Runnable generate) {
+        // capture printed output into a temporary buffer
+        StringBuilder buffer = new StringBuilder();
+        PrintWriter originalWriter = this.writer;
+        this.writer.flush();
+
+        PrintWriter tempWriter = new PrintWriter(new java.io.Writer() {
+            @Override public void write(char[] cbuf, int off, int len) { buffer.append(cbuf, off, len); }
+            @Override public void flush() {}
+            @Override public void close() {}
+        });
+
+        // swap writer
+        java.lang.reflect.Field writerField;
+        try {
+            writerField = Generator.class.getDeclaredField("writer");
+            writerField.setAccessible(true);
+            writerField.set(this, tempWriter);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // generate inner stmt
+        generate.run();
+        tempWriter.flush();
+
+        // restore writer
+        try {
+            java.lang.reflect.Field writerField2 = Generator.class.getDeclaredField("writer");
+            writerField2.setAccessible(true);
+            writerField2.set(this, originalWriter);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // remove a single trailing semicolon IF present
+        String s = buffer.toString().trim();
+        if (s.endsWith(";")) {
+            s = s.substring(0, s.length() - 1);
+        }
+
+        print(s);
     }
 
     @Override
@@ -181,9 +257,13 @@ public final class Generator implements Ast.Visitor<Void> {
         print(") {");
 
         indent++;
-        for (Ast.Statement stmt : ast.getStatements()) {
+        if (ast.getStatements().isEmpty()) {
             newline(indent);
-            visit(stmt);
+        } else {
+            for (Ast.Statement stmt : ast.getStatements()) {
+                newline(indent);
+                visit(stmt);
+            }
         }
         indent--;
 
