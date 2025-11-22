@@ -252,20 +252,22 @@ public final class Generator implements Ast.Visitor<Void> {
 
     @Override
     public Void visit(Ast.Statement.While ast) {
+
         print("while (");
         visit(ast.getCondition());
         print(") {");
 
-        indent++;
         if (ast.getStatements().isEmpty()) {
+            // No space inside braces
             newline(indent);
         } else {
+            indent++;
             for (Ast.Statement stmt : ast.getStatements()) {
                 newline(indent);
                 visit(stmt);
             }
+            indent--;
         }
-        indent--;
 
         newline(indent);
         print("}");
@@ -332,6 +334,21 @@ public final class Generator implements Ast.Visitor<Void> {
             if (!ast.getArguments().isEmpty()) {
                 visit(ast.getArguments().get(0));
             }
+            print(")");
+            return null;
+        }
+
+        // special case: string slicing -> substring
+        if (ast.getName().equals("slice")
+                && ast.getReceiver().isPresent()
+                && ast.getReceiver().get().getType().equals(Environment.Type.STRING)) {
+
+            // receiver.substring(arg0, arg1)
+            visit(ast.getReceiver().get());
+            print(".substring(");
+            visit(ast.getArguments().get(0));
+            print(", ");
+            visit(ast.getArguments().get(1));
             print(")");
             return null;
         }
